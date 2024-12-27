@@ -1,0 +1,27 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "student": {
+      "home": {
+        "title": "Students",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Student",
+        "createOrEditLabel": "Создать или отредактировать Student",
+        "notFound": "Students не найдено"
+      },
+      "created": "Новый Student создан с идентификатором {{ param }}",
+      "updated": "Student обновлен с идентификатором {{ param }}",
+      "deleted": "Student удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Student {{ id }}?"
+      },
+      "detail": {
+        "title": "Student"
+      },
+      "id": "ID",
+      "fname": "Fname",
+      "mname": "Mname",
+      "lname": "Lname",
+      "group": "Group"
+    }
+  }
+}

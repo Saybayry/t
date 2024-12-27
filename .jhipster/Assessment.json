@@ -1,0 +1,36 @@
+{
+  "annotations": {
+    "changelogDate": "20241226011002"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "isPresent",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "assessment",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Assessment",
+  "relationships": [
+    {
+      "otherEntityField": "fname",
+      "otherEntityName": "student",
+      "relationshipName": "student",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "classDate",
+      "otherEntityName": "lesson",
+      "relationshipName": "lesson",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

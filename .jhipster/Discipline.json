@@ -1,0 +1,25 @@
+{
+  "annotations": {
+    "changelogDate": "20241226011003"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    }
+  ],
+  "name": "Discipline",
+  "relationships": [
+    {
+      "otherEntityName": "teacher",
+      "otherEntityRelationshipName": "discipline",
+      "relationshipName": "teacher",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

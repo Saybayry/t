@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (student(); as studentRef) {
+      <div>
+        <h2 data-cy="studentDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.student.detail.title">Student</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ studentRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSampleApplicationApp.student.fname">Fname</span></dt>
+          <dd>
+            <span>{{ studentRef.fname }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSampleApplicationApp.student.mname">Mname</span></dt>
+          <dd>
+            <span>{{ studentRef.mname }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSampleApplicationApp.student.lname">Lname</span></dt>
+          <dd>
+            <span>{{ studentRef.lname }}</span>
+          </dd>
+          <dt><span jhiTranslate="jhipsterSampleApplicationApp.student.group">Group</span></dt>
+          <dd>
+            @if (student()!.group) {
+              <div>
+                <a [routerLink]="['/group', student()!.group?.id, 'view']">{{ studentRef.group?.name }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Назад</span>
+        </button>
+
+        <button type="button" [routerLink]="['/student', studentRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Изменить</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,27 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "assessment": {
+      "home": {
+        "title": "Assessments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Assessment",
+        "createOrEditLabel": "Create or edit a Assessment",
+        "notFound": "No Assessments found"
+      },
+      "created": "A new Assessment is created with identifier {{ param }}",
+      "updated": "A Assessment is updated with identifier {{ param }}",
+      "deleted": "A Assessment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Assessment {{ id }}?"
+      },
+      "detail": {
+        "title": "Assessment"
+      },
+      "id": "ID",
+      "isPresent": "Is Present",
+      "assessment": "Assessment",
+      "student": "Student",
+      "lesson": "Lesson"
+    }
+  }
+}

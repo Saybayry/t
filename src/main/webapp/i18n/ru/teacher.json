@@ -1,0 +1,27 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "teacher": {
+      "home": {
+        "title": "Teachers",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Teacher",
+        "createOrEditLabel": "Создать или отредактировать Teacher",
+        "notFound": "Teachers не найдено"
+      },
+      "created": "Новый Teacher создан с идентификатором {{ param }}",
+      "updated": "Teacher обновлен с идентификатором {{ param }}",
+      "deleted": "Teacher удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Teacher {{ id }}?"
+      },
+      "detail": {
+        "title": "Teacher"
+      },
+      "id": "ID",
+      "fname": "Fname",
+      "mname": "Mname",
+      "lname": "Lname",
+      "discipline": "Discipline"
+    }
+  }
+}

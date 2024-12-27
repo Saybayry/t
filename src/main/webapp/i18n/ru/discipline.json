@@ -1,0 +1,25 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "discipline": {
+      "home": {
+        "title": "Disciplines",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Discipline",
+        "createOrEditLabel": "Создать или отредактировать Discipline",
+        "notFound": "Disciplines не найдено"
+      },
+      "created": "Новый Discipline создан с идентификатором {{ param }}",
+      "updated": "Discipline обновлен с идентификатором {{ param }}",
+      "deleted": "Discipline удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Discipline {{ id }}?"
+      },
+      "detail": {
+        "title": "Discipline"
+      },
+      "id": "ID",
+      "name": "Name",
+      "teacher": "Teacher"
+    }
+  }
+}

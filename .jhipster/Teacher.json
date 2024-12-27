@@ -1,0 +1,38 @@
+{
+  "annotations": {
+    "changelogDate": "20241226011007"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "fname",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "mname",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "lname",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    }
+  ],
+  "name": "Teacher",
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "discipline",
+      "otherEntityRelationshipName": "teacher",
+      "relationshipName": "discipline",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

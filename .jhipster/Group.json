@@ -1,0 +1,23 @@
+{
+  "annotations": {
+    "changelogDate": "20241226011004"
+  },
+  "applications": "*",
+  "entityTableName": "jhi_group",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "yearGraduation",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Group",
+  "relationships": [],
+  "searchEngine": "no"
+}

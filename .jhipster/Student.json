@@ -1,0 +1,37 @@
+{
+  "annotations": {
+    "changelogDate": "20241226011006"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "fname",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "mname",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "lname",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    }
+  ],
+  "name": "Student",
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "group",
+      "relationshipName": "group",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

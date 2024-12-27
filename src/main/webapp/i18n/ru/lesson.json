@@ -1,0 +1,27 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "lesson": {
+      "home": {
+        "title": "Lessons",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Lesson",
+        "createOrEditLabel": "Создать или отредактировать Lesson",
+        "notFound": "Lessons не найдено"
+      },
+      "created": "Новый Lesson создан с идентификатором {{ param }}",
+      "updated": "Lesson обновлен с идентификатором {{ param }}",
+      "deleted": "Lesson удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Lesson {{ id }}?"
+      },
+      "detail": {
+        "title": "Lesson"
+      },
+      "id": "ID",
+      "classDate": "Class Date",
+      "classNumber": "Class Number",
+      "discipline": "Discipline",
+      "teacher": "Teacher"
+    }
+  }
+}

@@ -1,0 +1,123 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-assessment-heading"
+        data-cy="AssessmentCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.assessment.home.createOrEditLabel"
+      >
+        Создать или отредактировать Assessment
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="jhipsterSampleApplicationApp.assessment.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let isPresentRef = editForm.get('isPresent')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_isPresent" jhiTranslate="jhipsterSampleApplicationApp.assessment.isPresent"
+            >Is Present</label
+          >
+          <input type="number" class="form-control" name="isPresent" id="field_isPresent" data-cy="isPresent" formControlName="isPresent" />
+          @if (isPresentRef.invalid && (isPresentRef.dirty || isPresentRef.touched)) {
+            <div>
+              @if (editForm.get('isPresent')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Это поле обязательно к заполнению.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('isPresent')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Это поле должно быть число.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let assessmentRef = editForm.get('assessment')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_assessment" jhiTranslate="jhipsterSampleApplicationApp.assessment.assessment"
+            >Assessment</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="assessment"
+            id="field_assessment"
+            data-cy="assessment"
+            formControlName="assessment"
+          />
+          @if (assessmentRef.invalid && (assessmentRef.dirty || assessmentRef.touched)) {
+            <div>
+              @if (editForm.get('assessment')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Это поле обязательно к заполнению.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('assessment')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Это поле должно быть число.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_student" jhiTranslate="jhipsterSampleApplicationApp.assessment.student">Student</label>
+          <select
+            class="form-control"
+            id="field_student"
+            data-cy="student"
+            name="student"
+            formControlName="student"
+            [compareWith]="compareStudent"
+          >
+            <option [ngValue]="null"></option>
+            @for (studentOption of studentsSharedCollection; track $index) {
+              <option [ngValue]="studentOption">{{ studentOption.fname }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_lesson" jhiTranslate="jhipsterSampleApplicationApp.assessment.lesson">Lesson</label>
+          <select
+            class="form-control"
+            id="field_lesson"
+            data-cy="lesson"
+            name="lesson"
+            formControlName="lesson"
+            [compareWith]="compareLesson"
+          >
+            <option [ngValue]="null"></option>
+            @for (lessonOption of lessonsSharedCollection; track $index) {
+              <option [ngValue]="lessonOption">{{ lessonOption.classDate }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Отмена</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Сохранить</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

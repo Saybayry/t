@@ -1,0 +1,101 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-student-heading"
+        data-cy="StudentCreateUpdateHeading"
+        jhiTranslate="jhipsterSampleApplicationApp.student.home.createOrEditLabel"
+      >
+        Создать или отредактировать Student
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="jhipsterSampleApplicationApp.student.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let fnameRef = editForm.get('fname')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_fname" jhiTranslate="jhipsterSampleApplicationApp.student.fname">Fname</label>
+          <input type="text" class="form-control" name="fname" id="field_fname" data-cy="fname" formControlName="fname" />
+          @if (fnameRef.invalid && (fnameRef.dirty || fnameRef.touched)) {
+            <div>
+              @if (editForm.get('fname')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Это поле обязательно к заполнению.</small>
+              }
+              @if (editForm.get('fname')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: '255' }"
+                  >Это поле не может быть длинее, чем 255 символов.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        @let mnameRef = editForm.get('mname')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_mname" jhiTranslate="jhipsterSampleApplicationApp.student.mname">Mname</label>
+          <input type="text" class="form-control" name="mname" id="field_mname" data-cy="mname" formControlName="mname" />
+          @if (mnameRef.invalid && (mnameRef.dirty || mnameRef.touched)) {
+            <div>
+              @if (editForm.get('mname')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Это поле обязательно к заполнению.</small>
+              }
+              @if (editForm.get('mname')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: '255' }"
+                  >Это поле не может быть длинее, чем 255 символов.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        @let lnameRef = editForm.get('lname')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_lname" jhiTranslate="jhipsterSampleApplicationApp.student.lname">Lname</label>
+          <input type="text" class="form-control" name="lname" id="field_lname" data-cy="lname" formControlName="lname" />
+          @if (lnameRef.invalid && (lnameRef.dirty || lnameRef.touched)) {
+            <div>
+              @if (editForm.get('lname')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: '255' }"
+                  >Это поле не может быть длинее, чем 255 символов.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_group" jhiTranslate="jhipsterSampleApplicationApp.student.group">Group</label>
+          <select class="form-control" id="field_group" data-cy="group" name="group" formControlName="group" [compareWith]="compareGroup">
+            <option [ngValue]="null"></option>
+            @for (groupOption of groupsSharedCollection; track $index) {
+              <option [ngValue]="groupOption">{{ groupOption.name }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Отмена</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Сохранить</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

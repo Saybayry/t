@@ -1,0 +1,114 @@
+<div>
+  <h2 id="page-heading" data-cy="TeacherHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.teacher.home.title">Teachers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.teacher.home.refreshListLabel">Обновить список</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-teacher"
+        [routerLink]="['/teacher/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.teacher.home.createLabel">Создать новый Teacher</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (teachers().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="jhipsterSampleApplicationApp.teacher.home.notFound">Teachers не найдено</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fname">
+              <div class="d-flex">
+                <span jhiTranslate="jhipsterSampleApplicationApp.teacher.fname">Fname</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="mname">
+              <div class="d-flex">
+                <span jhiTranslate="jhipsterSampleApplicationApp.teacher.mname">Mname</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="lname">
+              <div class="d-flex">
+                <span jhiTranslate="jhipsterSampleApplicationApp.teacher.lname">Lname</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="discipline.name">
+              <div class="d-flex">
+                <span jhiTranslate="jhipsterSampleApplicationApp.teacher.discipline">Discipline</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (teacher of teachers(); track trackId(teacher)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/teacher', teacher.id, 'view']">{{ teacher.id }}</a>
+              </td>
+              <td>{{ teacher.fname }}</td>
+              <td>{{ teacher.mname }}</td>
+              <td>{{ teacher.lname }}</td>
+              <td>
+                @for (discipline of teacher.disciplines; track $index; let last = $last) {
+                  <span>
+                    <a class="form-control-static" [routerLink]="['/discipline', discipline.id, 'view']">{{ discipline.name }}</a
+                    >{{ last ? '' : ', ' }}
+                  </span>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/teacher', teacher.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Просмотр</span>
+                  </a>
+
+                  <a [routerLink]="['/teacher', teacher.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Изменить</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(teacher)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Удалить</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

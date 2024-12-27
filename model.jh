@@ -1,0 +1,49 @@
+entity Lesson {
+  classDate LocalDate required,
+  classNumber Integer required
+}
+
+entity Discipline {
+  name String required maxlength(255)
+}
+
+entity Group {
+  name String required maxlength(255),
+  yearGraduation Integer required
+}
+
+entity Student {
+  fname String required maxlength(255),
+  mname String required maxlength(255),
+  lname String maxlength(255),
+}
+
+entity Teacher {
+  fname String required maxlength(255),
+  mname String required maxlength(255),
+  lname String maxlength(255)
+}
+
+entity Assessment {
+  isPresent Long required,
+  assessment Integer required
+}
+
+// Relationships
+relationship ManyToOne {
+  Assessment{student(fname)} to Student,
+  Assessment{lesson(classDate)} to Lesson
+}
+
+// Relationships
+relationship ManyToMany {
+  Teacher{discipline(name)} to Discipline{teacher}
+}
+
+relationship ManyToOne {
+  Lesson{discipline(name)} to Discipline,
+  Lesson{teacher(fname)} to Teacher,
+  Student{group(name)} to Group,
+  Assessment{student(fname)} to Student,
+  Assessment{lesson(classDate)} to Lesson
+}

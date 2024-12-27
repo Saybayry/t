@@ -1,0 +1,36 @@
+{
+  "annotations": {
+    "changelogDate": "20241226011005"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "classDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "classNumber",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Lesson",
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "discipline",
+      "relationshipName": "discipline",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "fname",
+      "otherEntityName": "teacher",
+      "relationshipName": "teacher",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}
